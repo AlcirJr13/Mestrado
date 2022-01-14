@@ -10,13 +10,6 @@ from cv2 import cv2
 from PIL import Image
 
 data = pd.read_csv("dataset_descriptor.csv")
-columnsAttack = data.columns.values
-columnsNormal = data.columns.values
-
-attack = []
-attack = pd.DataFrame(data=attack, columns=columnsAttack)
-normal = []
-normal = pd.DataFrame(data=normal,columns=columnsNormal)
 
 #print(attack)
 #print(normal)
@@ -36,24 +29,31 @@ columns = ["ip_proto","ip_len_mean","ip_len_median","ip_len_var",
 
 data = data[columns]
 
+columnsAttack = data.columns.values
+columnsNormal = data.columns.values
 
-#X = data.drop(columns=['Label2'])
-#y = data['Label2']
+attack = []
+attack = pd.DataFrame(data=attack, columns=columnsAttack)
+normal = []
+normal = pd.DataFrame(data=normal,columns=columnsNormal)
+
 
 
 for i in range(0,len(data)):
+#for i in range(0,10):
   if data.loc[i,'Label2']=="normal":
     normal.loc[len(normal)] = data.loc[i]
   else: #data[i,'Label2']=='attack' :
     attack.loc[len(attack)] = data.loc[i]
-  print(i)
+  #print(i)
 
 
 
 attack = attack.drop(columns=['Label2'])
+
 normal = normal.drop(columns=['Label2'])
 
-print(len(attack.columns))
+
 
 #print('======NORMAL======')
 #print(X)
@@ -99,7 +99,7 @@ for i in range(0,len(attack2)):
   im.save(titulo)
   indiceImg = i+1
   titImg = ('Linha'+str(i)+'.png '+'1 0 0 32 0')
-  titulo2 = ('imagens\\ataques\\'+titImg)
+  titulo2 = ('\\imagens\\ataques\\'+titImg)
   with open(".\\imagens\\ataques\\info.dat","a+") as info:
     info.write(titulo2+"\n")
     info.read()
