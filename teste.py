@@ -5,22 +5,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-import seaborn as sn
+#import seaborn as sn
 from cv2 import cv2
 from PIL import Image
-from sklearn import linear_model
-from sklearn.ensemble import (AdaBoostClassifier, GradientBoostingClassifier,
-                              RandomForestClassifier)
-from sklearn.feature_selection import RFECV, SelectFromModel
-from sklearn.linear_model import LogisticRegression, Perceptron, SGDClassifier
-from sklearn.metrics import auc, confusion_matrix, roc_curve
-from sklearn.model_selection import GridSearchCV, train_test_split
-from sklearn.naive_bayes import GaussianNB
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeClassifier
 
 data = pd.read_csv("dataset_descriptor.csv")
 columnsAttack = data.columns.values
@@ -49,6 +36,7 @@ columns = ["ip_proto","ip_len_mean","ip_len_median","ip_len_var",
 
 data = data[columns]
 
+
 #X = data.drop(columns=['Label2'])
 #y = data['Label2']
 
@@ -60,8 +48,12 @@ for i in range(0,len(data)):
     attack.loc[len(attack)] = data.loc[i]
   print(i)
 
+
+
 attack = attack.drop(columns=['Label2'])
 normal = normal.drop(columns=['Label2'])
+
+print(len(attack.columns))
 
 #print('======NORMAL======')
 #print(X)
@@ -103,12 +95,12 @@ for i in range(0,len(attack2)):
   attack3 = [attack2[i]]
   attack3 = np.array(attack3,np.uint8)
   im = Image.fromarray((attack3))
-  titulo = ('./imagens/ataques/ataque'+str(i)+'.png')
+  titulo = ('.\\imagens\\ataques\\ataque'+str(i)+'.png')
   im.save(titulo)
   indiceImg = i+1
-  titImg = ('Linha'+str(i)+'.png '+str(i+1)+ ' 0 0 33 0')
-  titulo2 = ('img / '+titImg)
-  with open("./imagens/ataques/info.dat","a+") as info:
+  titImg = ('Linha'+str(i)+'.png '+'1 0 0 32 0')
+  titulo2 = ('imagens\\ataques\\'+titImg)
+  with open(".\\imagens\\ataques\\info.dat","a+") as info:
     info.write(titulo2+"\n")
     info.read()
 
@@ -117,11 +109,11 @@ for i in range(0,len(normal2)):
   normal3 = [normal2[i]]
   normal3 = np.array(normal3,np.uint8)
   im = Image.fromarray((normal3))
-  titulo = ('./imagens/normal/Linha'+str(i)+'.png')
+  titulo = ('.\\imagens\\normal\\Linha'+str(i)+'.png')
   im.save(titulo)
   titImg = ('Linha'+str(i)+'.png')
-  titulo2 = ('img / '+titImg)
-  with open("./imagens/normal/bg.txt","a+") as bg:
+  titulo2 = ('\\imagens\\normal\\'+titImg)
+  with open(".\\imagens\\normal\\bg.txt","a+") as bg:
     bg.write(titulo2+"\n")
     bg.read()
 
@@ -132,5 +124,3 @@ for i in range(0,len(normal2)):
 #  im = Image.fromarray((X3))
 #  titulo = ('./imagens/Linha'+str(i)+'.png')
 #  im.save(titulo)
-
-
