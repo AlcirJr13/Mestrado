@@ -95,10 +95,9 @@ for i in range(0,len(attack2)):
   attack3 = [attack2[i]]
   attack3 = np.array(attack3,np.uint8)
   im = Image.fromarray((attack3))
-  titulo = ('.\\imagens\\ataques\\ataque'+str(i)+'.png')
+  titulo = ('.\\imagens\\ataques\\ataque'+(str(i+1))+'.png')
   im.save(titulo)
-  indiceImg = i+1
-  titImg = ('Linha'+str(i)+'.png '+'1 0 0 32 0')
+  titImg = ('ataque'+(str(i+1))+'.png '+'1 0 0 32 0')
   titulo2 = ('\\imagens\\ataques\\'+titImg)
   with open(".\\imagens\\ataques\\info.dat","a+") as info:
     info.write(titulo2+"\n")
@@ -109,9 +108,9 @@ for i in range(0,len(normal2)):
   normal3 = [normal2[i]]
   normal3 = np.array(normal3,np.uint8)
   im = Image.fromarray((normal3))
-  titulo = ('.\\imagens\\normal\\Linha'+str(i)+'.png')
+  titulo = ('.\\imagens\\normal\\normal'+(str(i+1))+'.png')
   im.save(titulo)
-  titImg = ('Linha'+str(i)+'.png')
+  titImg = ('normal'+(str(i+1))+'.png')
   titulo2 = ('\\imagens\\normal\\'+titImg)
   with open(".\\imagens\\normal\\bg.txt","a+") as bg:
     bg.write(titulo2+"\n")
