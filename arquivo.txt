@@ -1,4 +1,5 @@
-Essa é a primeira linha escrita por nós. 
-Essa é a nossa segunda linha.Essa deveria ser a terceira linha porém ainda é a segunda. 
-Essa sim é a terceira.Eimagem 1
+Essa ï¿½ a primeira linha escrita por nï¿½s. 
+Essa ï¿½ a nossa segunda linha.Essa deveria ser a terceira linha porï¿½m ainda ï¿½ a segunda. 
+Essa sim ï¿½ a terceira.Eimagem 1
 Eimagem 2Eimagem 3
+testando
